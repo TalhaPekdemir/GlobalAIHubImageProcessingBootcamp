@@ -18,7 +18,7 @@
 ## 0. Imports and Environment Variables  
 
 Essential dependencies include:  
-- **TensorFlow/Keras** - Prerocess and augment the dataset, constructing and evaluating the CNN model.  
+- **TensorFlow/Keras** - Preprocess and augment the dataset, constructing and evaluating the CNN model.  
 - **Keras Tuner** - Automated hyperparameter optimization.  
 - **OpenCV** - Reading/writing images.  
 - **Sklearn** - Dataset partitioning. 
@@ -31,7 +31,7 @@ A global random seed is fixed to ensure reproducibility.
 
 ## 1. Using the Dataset  
 
-The dataset consists of images belonging to 10 classes of animals namely collie, dolphin elephant, fox, moose, rabbit, sheep, squirrel, giant panda and polar bear.
+The [dataset](https://www.kaggle.com/datasets/rrebirrth/animals-with-attributes-2) consists of images belonging to 10 classes of animals. Namely collie, dolphin, elephant, fox, moose, rabbit, sheep, squirrel, giant panda and polar bear.
 - Main dataset was not balanced so first 650 samples taken from each used class. reducing the risk of bias.  
 - Observed that TensorFlow randomness shuffled dataset caused some among the samples could cause train-test datasets to clash. Reducing dataset reliability. Instead used Sklearn train-test split method. Ensuring each train/validation/test class has equal samples.
 - Visual inspections and exploratory data analysis confirm the dataset’s integrity. Sklearn method worked better than TensorFlow's.
@@ -81,6 +81,7 @@ The test dataset is artificially manipulated to assess the model’s resilience 
 Techniques applied:  
 - **Color Channel Adjustments** - Tests for robustness against hue shifts.  
 
+![Hue shifted test images](resources/hue_shifted.png)
 ---
 
 ## 6. Testing Model With Manipulated Dataset  
@@ -94,7 +95,6 @@ The manipulated dataset is evaluated against the trained model.
 To mitigate the performance degradation, white balance (Gray World) algorithm has applied.  
 - This algorithm corrects for color distortions by recalibrating color channels.  
 
-![Hue shifted test images](resources/hue_shifted.png)
 ---
 
 ## 8. Testing Model With Color Constancy Applied Images  
